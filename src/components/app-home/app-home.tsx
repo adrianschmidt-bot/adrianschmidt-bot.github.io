@@ -141,6 +141,7 @@ export class AppHome {
             <section class="app-home">
                 <div class="difficulty-controls">
                     <pd-button
+                        data-testid="difficulty-easy"
                         label="Easy"
                         onClick={this.setDifficulty.bind(this, EASY)}
                         disabled={this.isRunning}
@@ -148,6 +149,7 @@ export class AppHome {
                         color="green"
                     />
                     <pd-button
+                        data-testid="difficulty-medium"
                         label="Medium"
                         onClick={this.setDifficulty.bind(this, MEDIUM)}
                         disabled={this.isRunning}
@@ -155,6 +157,7 @@ export class AppHome {
                         color="yellow"
                     />
                     <pd-button
+                        data-testid="difficulty-hard"
                         label="Hard"
                         onClick={this.setDifficulty.bind(this, HARD)}
                         disabled={this.isRunning}
@@ -164,12 +167,14 @@ export class AppHome {
                 </div>
                 <div class="game-controls">
                     <pd-button
+                        data-testid="start-pause"
                         label={this.isRunning ? 'Pause' : 'Start'}
                         onClick={this.playOrPause.bind(this)}
                         primary={true}
                         color="green"
                     />
                     <pd-button
+                        data-testid="reset"
                         label="Reset"
                         onClick={this.resetGame.bind(this)}
                         disabled={this.isRunning}
@@ -178,15 +183,16 @@ export class AppHome {
                 <div class="timers">
                     <div>
                         <p>Game time left:</p>
-                        <p class="timer">{this.gameTimer}</p>
+                        <p class="timer" data-testid="game-timer">{this.gameTimer}</p>
                     </div>
                     <div class={this.isFeedingAllowed() ? 'warning' : ''}>
                         <p>Feeder time left:</p>
-                        <p class="timer">{this.feedTimer}</p>
+                        <p class="timer" data-testid="feed-timer">{this.feedTimer}</p>
                     </div>
                 </div>
                 <div>
                     <pd-button
+                        data-testid="feed"
                         label="Feed!"
                         onClick={this.feed.bind(this)}
                         disabled={!this.isFeedingAllowed()}
@@ -200,10 +206,11 @@ export class AppHome {
                         <br />
                         successes left:
                     </div>
-                    <div class="counter">{this.successesUntilVictory}</div>
+                    <div class="counter" data-testid="success-counter">{this.successesUntilVictory}</div>
                 </div>
                 <p>
                     <pd-button
+                        data-testid="log-success"
                         label="Log success"
                         onClick={this.logSuccess.bind(this)}
                         disabled={!this.isRunning}
@@ -212,11 +219,12 @@ export class AppHome {
                 </p>
                 <div>
                     <p>
-                        Remaining clues: <b>{this.remainingClues}</b>
+                        Remaining clues: <b data-testid="remaining-clues">{this.remainingClues}</b>
                     </p>
                     <div class="clue-buttons">
                         <div>
                             <pd-button
+                                data-testid="general-clue"
                                 label="Use general clue"
                                 onClick={this.useGeneralClue.bind(this)}
                                 disabled={!this.isGeneralClueAllowed()}
@@ -225,6 +233,7 @@ export class AppHome {
                         </div>
                         <div>
                             <pd-button
+                                data-testid="specific-clue"
                                 label="Use specific clue"
                                 onClick={this.useSpecificClue.bind(this)}
                                 disabled={!this.isSpecificClueAllowed()}
@@ -237,6 +246,7 @@ export class AppHome {
                 <p class="rules-version">
                     <a
                         href=""
+                        data-testid="rules-link"
                         onClick={event => {
                             event.preventDefault();
                             this.showRules();
@@ -249,6 +259,7 @@ export class AppHome {
                 <aside class="settings">
                     <button
                         id="toggle-sound"
+                        data-testid="sound-toggle"
                         class="mdc-icon-button material-icons"
                         aria-label="Toggle sound"
                         aria-hidden="true"
@@ -260,28 +271,29 @@ export class AppHome {
                     />
                 </aside>
 
-                <aside id="game-over-dialog" class="mdc-dialog">
+                <aside id="game-over-dialog" data-testid="game-over-dialog" class="mdc-dialog">
                     <div class="mdc-dialog__surface">
                         <header class="mdc-dialog__header">
-                            <h2 class="mdc-dialog__header__title">
+                            <h2 class="mdc-dialog__header__title" data-testid="game-over-heading">
                                 {this.resultHeading}
                             </h2>
                         </header>
                         <section class="mdc-dialog__body">
-                            {this.resultText}
+                            <span data-testid="game-over-text">{this.resultText}</span>
                             <span
                                 class={`
                                     points
                                     ${this.gameWon ? 'game-won' : 'game-lost'}
                                 `}
                             >
-                                <p>Base points: {this.difficultyPoints}</p>
-                                <p>Time points: {this.timerPoints}</p>
+                                <p data-testid="base-points">Base points: {this.difficultyPoints}</p>
+                                <p data-testid="time-points">Time points: {this.timerPoints}</p>
                                 <p>+1 point for each remaining Happiness!</p>
                             </span>
                         </section>
                         <footer class="mdc-dialog__footer">
                             <pd-button
+                                data-testid="game-over-button"
                                 class="mdc-dialog__footer__button--accept"
                                 label={this.resultButtonLabel}
                                 primary={true}

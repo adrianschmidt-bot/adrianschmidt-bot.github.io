@@ -86,18 +86,18 @@ export class AppHome {
 
     public render() {
         return (
-            <aside id="rules-dialog" class="mdc-dialog">
+            <aside id="rules-dialog" data-testid="rules-dialog" class="mdc-dialog">
                 <div class="mdc-dialog__surface">
                     <header class="mdc-dialog__header">
                         <h1 class="mdc-dialog__header__title">Rules</h1>
                     </header>
                     <section class="mdc-dialog__body">
-                        <div class="dialog-body">
+                        <div class="dialog-body" data-testid="rules-content">
                             <span innerHTML={this.pocketDragon} />
                             {Build.isBrowser &&
                                 this.promos.map(promo => {
                                     return (
-                                        <app-collapsible-section class="clearfix">
+                                        <app-collapsible-section class="clearfix" data-testid={`promo-${promo.name}`}>
                                             <h2 slot="header">
                                                 Promo Rules: {promo.displayName}
                                             </h2>
@@ -121,6 +121,7 @@ export class AppHome {
                     </section>
                     <footer class="mdc-dialog__footer">
                         <pd-button
+                            data-testid="rules-close"
                             class="mdc-dialog__footer__button--accept"
                             label="Close"
                             primary={true}
