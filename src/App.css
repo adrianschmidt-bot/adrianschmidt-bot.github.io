@@ -1,0 +1,326 @@
+/* App layout */
+.app {
+  min-height: 100vh;
+}
+
+/* Header */
+.mdc-top-app-bar {
+  background-color: var(--color-primary);
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.mdc-top-app-bar__row {
+  display: flex;
+  height: 56px;
+  padding: 0 16px;
+  align-items: center;
+}
+
+.mdc-top-app-bar__title {
+  font-size: 20px;
+  font-weight: normal;
+}
+
+/* Main content */
+.app-home {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 500px;
+  min-width: 0;
+  box-sizing: border-box;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 66px;
+  position: relative;
+  text-align: center;
+}
+
+/* Warning state */
+.warning {
+  color: var(--color-red);
+}
+
+/* Button groups */
+.difficulty-controls,
+.game-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+
+/* Timers */
+.timers {
+  display: flex;
+  justify-content: space-around;
+}
+
+.timers > div {
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.timers > div > .timer {
+  font-size: 36px;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+}
+
+/* Successes */
+.successes {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1em;
+}
+
+.successes > div {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.successes > .counter {
+  font-size: 36px;
+}
+
+/* Clue buttons */
+.clue-buttons {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.clue-buttons > div {
+  margin-bottom: 1em;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/* Rules version link */
+.rules-version {
+  font-size: 10px;
+}
+
+.rules-version a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+/* Settings */
+.settings {
+  bottom: 5px;
+  color: var(--color-grey);
+  position: absolute;
+  right: 5px;
+}
+
+/* Points display */
+.points.game-lost {
+  display: none;
+}
+
+/* Icon button */
+.mdc-icon-button {
+  width: 48px;
+  height: 48px;
+  padding: 12px;
+  font-size: 24px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+}
+
+/* ========== Dialog Styles ========== */
+.mdc-dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.mdc-dialog.mdc-dialog--open {
+  display: flex;
+}
+
+.mdc-dialog__backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.32);
+}
+
+.mdc-dialog__surface {
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 11px 15px -7px rgba(0,0,0,.2),
+              0 24px 38px 3px rgba(0,0,0,.14),
+              0 9px 46px 8px rgba(0,0,0,.12);
+  max-width: 865px;
+  width: calc(100% - 16px);
+  max-height: calc(100vh - 16px);
+  max-height: calc(100dvh - 16px);
+  overflow: auto;
+  z-index: 1;
+}
+
+.mdc-dialog__header {
+  padding: 24px 24px 0;
+}
+
+.mdc-dialog__header__title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.mdc-dialog__body {
+  padding: 20px 24px;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.mdc-dialog__footer {
+  padding: 8px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Points in game over dialog */
+.points {
+  display: block;
+  margin-top: 16px;
+}
+
+.points p {
+  margin: 4px 0;
+}
+
+/* ========== Rules Modal Styles ========== */
+.rules-surface {
+  max-height: calc(100vh - 16px);
+  max-height: calc(100dvh - 16px);
+  display: flex;
+  flex-direction: column;
+}
+
+.rules-surface .mdc-dialog__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.rules-surface .mdc-dialog__header__title {
+  text-align: center;
+  width: 100%;
+}
+
+/* Dialog body uses Arial for body text, Pocket Dragon font only for headings */
+.dialog-body {
+  font-family: Arial, sans-serif;
+  max-height: calc(100vh - 8rem);
+  max-height: calc(100dvh - 8rem);
+  overflow-y: auto;
+  text-align: left;
+  text-transform: none;
+}
+
+.dialog-body h1,
+.dialog-body h2,
+.dialog-body h3,
+.dialog-body h4,
+.dialog-body h5,
+.dialog-body h6 {
+  font-family: var(--font-family);
+  text-transform: uppercase;
+}
+
+.dialog-body h1 {
+  font-size: 2em;
+}
+
+.dialog-body h2 {
+  font-size: 1.5em;
+  margin-top: 2em;
+}
+
+.dialog-body h3 {
+  font-size: 1.25em;
+  margin-top: 2em;
+}
+
+.dialog-body p {
+  margin: 8px 0;
+}
+
+.dialog-body ul,
+.dialog-body ol {
+  margin: 8px 0;
+  padding-left: 24px;
+}
+
+.dialog-body li {
+  margin: 4px 0;
+}
+
+/* ========== Collapsible Section Styles ========== */
+.collapsible-section {
+  display: block;
+}
+
+.collapsible-toggle {
+  padding: 0.5em 0;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-family: var(--font-family);
+}
+
+.collapsible-toggle h2 {
+  display: inline;
+  margin-top: 1em;
+}
+
+.collapsible-content .promo {
+  max-height: calc(100vh - 8rem);
+  max-height: calc(100dvh - 8rem);
+  max-width: 100%;
+  float: left;
+  margin-right: 1em;
+  margin-bottom: 1em;
+}
+
+.clearfix::before,
+.clearfix::after {
+  content: " ";
+  display: table;
+}
+
+.clearfix::after {
+  clear: both;
+}
+
+@media (max-width: 480px) {
+  .collapsible-content .promo {
+    float: none;
+    display: block;
+    margin-right: 0;
+  }
+}
