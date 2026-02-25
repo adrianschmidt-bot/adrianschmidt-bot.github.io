@@ -1,90 +1,48 @@
 {
-  "name": "pocketdragon",
+  "name": "pocket-dragon-v2",
+  "version": "1.0.0",
+  "description": "Pocket Dragon companion app - rebuilt with React and comprehensive testing",
   "private": true,
-  "version": "0.0.0-development",
-  "description": "The companion app for the boardgame Pocket Dragon",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "es2015": "dist/esm/index.mjs",
-  "es2017": "dist/esm/index.mjs",
-  "jsnext:main": "dist/esm/index.mjs",
+  "type": "module",
   "scripts": {
-    "build": "npm run emptyDist && npm run build:ci",
-    "build:ci": "SASS_PATH=node_modules stencil build",
-    "cm": "git-cz",
-    "dev": "SASS_PATH=node_modules stencil build --dev --watch --serve",
-    "emptyDist": "find dist -not -name '.git' -delete",
-    "license-checker": "./node_modules/license-checker/bin/license-checker > LICENSES.txt",
-    "lint": "npm run lint:src && npm run lint:config",
-    "lint:fix": "npm run lint:src:fix && npm run lint:config:fix",
-    "lint:src": "npx tslint --project . -t stylish -c tslint.js 'src/**/*.{ts,tsx}'",
-    "lint:src:fix": "npx tslint --project . -t verbose --fix -c tslint.js 'src/**/*.{ts,tsx}'",
-    "lint:config": "npx eslint -c eslint.js '*.js' && npx prettier -l '{!(package*).json,.prettierrc}'",
-    "lint:config:fix": "npx eslint --fix -c eslint.js '*.js' && npx prettier --write '{!(package*).json,.prettierrc}'",
-    "setupPublishBranch": "mkdir dist && git worktree add dist master",
-    "postinstall": "npm run license-checker",
-    "publishApp": "npm run build && cd dist && git add --all && git commit -m \"Publishing to gh-pages\" && git push --force && cd ..",
-    "semantic-release": "semantic-release",
-    "start": "npm run dev"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test:unit": "vitest run",
+    "test:unit:watch": "vitest",
+    "test:unit:coverage": "vitest run --coverage",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:report": "playwright show-report",
+    "setupPublishBranch": "mkdir -p dist && git worktree add dist master",
+    "publishApp": "npm run build && cd dist && git add --all && (git diff --cached --quiet || git commit -m \"Publishing to gh-pages\") && git push --force-with-lease origin master && cd ..",
+    "semantic-release": "semantic-release"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint"
-    }
+  "keywords": [
+    "pocket-dragon",
+    "board-game",
+    "companion-app"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@semantic-release/github": "^11.0.0",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.2",
+    "@vitest/coverage-v8": "^4.0.15",
+    "semantic-release": "^24.0.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.2.7",
+    "vite-plugin-pwa": "^1.2.0",
+    "vitest": "^4.0.15"
   },
   "dependencies": {
-    "@stencil/core": "^1.8.3",
-    "@stencil/router": "^1.0.1",
-    "localforage": "^1.7.3",
-    "material-components-web": "^0.36.1",
-    "showdown": "^1.9.0"
-  },
-  "devDependencies": {
-    "@stencil/sass": "^1.1.1",
-    "acorn": "^6.0.4",
-    "commitizen": "^3.0.5",
-    "cz-conventional-changelog": "^2.1.0",
-    "eslint": "^5.10.0",
-    "eslint-config-prettier": "^3.3.0",
-    "eslint-plugin-prettier": "^3.0.0",
-    "husky": "^1.2.1",
-    "license-checker": "^24.1.0",
-    "prettier": "^1.15.3",
-    "semantic-release": "^15.13.1",
-    "tslint": "^5.12.0",
-    "tslint-config-prettier": "^1.17.0",
-    "tslint-eslint-rules": "^5.4.0",
-    "tslint-plugin-prettier": "^2.0.1",
-    "tslint-react": "^3.6.0",
-    "tslint-sonarts": "^1.8.0",
-    "workbox-build": "4.3.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/playtest-hq/pocketdragon.git"
-  },
-  "author": "Adrian Schmidt",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/playtest-hq/pocketdragon"
-  },
-  "homepage": "https://github.com/playtest-hq/pocketdragon",
-  "jest": {
-    "transform": {
-      "^.+\\.(ts|tsx)$": "<rootDir>/node_modules/@stencil/core/testing/jest.preprocessor.js"
-    },
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(tsx?|jsx?)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "json",
-      "jsx"
-    ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
+    "react-markdown": "^10.1.0",
+    "remark-breaks": "^4.0.0",
+    "remark-gfm": "^4.0.1"
   }
 }

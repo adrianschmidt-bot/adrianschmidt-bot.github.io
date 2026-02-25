@@ -1,0 +1,24 @@
+:root {
+  /* Colors */
+  --color-blue: #2f9cd7;
+  --color-green: #48bc9d;
+  --color-grey: #b2b3b4;
+  --color-red: #f3847e;
+  --color-yellow: #e8b63d;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* Theme colors */
+  --color-primary: var(--color-blue);
+  --color-secondary: var(--color-yellow);
+
+  /* Font */
+  --font-family: "cartoons_123regular", sans-serif;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+}

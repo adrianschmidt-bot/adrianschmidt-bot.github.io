@@ -1,0 +1,168 @@
+/* PdButton - SVG blob-shaped button matching original StencilJS component */
+
+.pd-button {
+  font-family: var(--font-family);
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.0892857143em;
+  border: 0;
+  position: relative;
+  padding: 4px 18px;
+  height: 44px;
+  min-width: 64px;
+  cursor: pointer;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pd-button:disabled {
+  pointer-events: none;
+}
+
+/* Label layer - sits on top of SVG background */
+.pd-button__label {
+  color: inherit;
+  position: relative;
+  z-index: 1;
+}
+
+/* SVG background layer */
+.pd-button__background {
+  color: white;
+  position: absolute;
+  bottom: 4px;
+  left: 4px;
+  right: 4px;
+  top: 4px;
+}
+
+.pd-button__background svg {
+  display: block;
+  fill: transparent;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  stroke-width: 0;
+  stroke: transparent;
+  top: 0;
+  width: 100%;
+}
+
+/* Color variants for flat buttons */
+.pd-button.green:not(:disabled) {
+  color: var(--color-green);
+}
+
+.pd-button.yellow:not(:disabled) {
+  color: var(--color-yellow);
+}
+
+.pd-button.red:not(:disabled) {
+  color: var(--color-red);
+}
+
+/* Disabled state for flat buttons */
+.pd-button:disabled .pd-button__label {
+  color: inherit;
+}
+
+.pd-button:disabled .pd-button__background {
+  color: white;
+}
+
+/* ========== Raised (primary) buttons ========== */
+.pd-button.pd-button--raised {
+  background-color: white;
+  box-shadow: none;
+}
+
+.pd-button.pd-button--raised:not(:disabled) .pd-button__label {
+  color: white;
+}
+
+.pd-button.pd-button--raised .pd-button__background {
+  color: var(--color-primary);
+}
+
+.pd-button.pd-button--raised .pd-button__background svg {
+  overflow: visible;
+  stroke: transparent;
+  stroke-width: 0;
+  fill: currentcolor;
+}
+
+.pd-button.pd-button--raised .pd-button__background svg path {
+  filter: url("#pd-shadow");
+}
+
+/* Raised button color variants */
+.pd-button.pd-button--raised.green .pd-button__background {
+  color: var(--color-green);
+}
+
+.pd-button.pd-button--raised.yellow .pd-button__background {
+  color: var(--color-yellow);
+}
+
+.pd-button.pd-button--raised.yellow:not(:disabled) .pd-button__label {
+  color: black;
+}
+
+.pd-button.pd-button--raised.red .pd-button__background {
+  color: var(--color-red);
+}
+
+/* Raised button disabled state */
+.pd-button.pd-button--raised:disabled .pd-button__background {
+  color: rgba(0, 0, 0, 0.12);
+}
+
+.pd-button.pd-button--raised:disabled .pd-button__background svg path {
+  filter: none;
+}
+
+.pd-button.pd-button--raised:disabled .pd-button__label {
+  color: rgba(0, 0, 0, 0.38);
+}
+
+/* ========== Outlined (selected) buttons ========== */
+.pd-button.pd-button--outlined::before,
+.pd-button.pd-button--outlined::after {
+  display: none;
+}
+
+.pd-button.pd-button--outlined .pd-button__background {
+  color: var(--color-primary);
+  bottom: 5px;
+  left: 6px;
+  right: 6px;
+  top: 5px;
+}
+
+.pd-button.pd-button--outlined .pd-button__background svg {
+  overflow: visible;
+  stroke: currentcolor;
+  stroke-width: 2;
+  fill: transparent;
+}
+
+/* Outlined button color variants */
+.pd-button.pd-button--outlined.green .pd-button__background {
+  color: var(--color-green);
+}
+
+.pd-button.pd-button--outlined.yellow .pd-button__background {
+  color: var(--color-yellow);
+}
+
+.pd-button.pd-button--outlined.red .pd-button__background {
+  color: var(--color-red);
+}
+
+/* Outlined button disabled state */
+.pd-button.pd-button--outlined:disabled .pd-button__background {
+  color: inherit;
+}
