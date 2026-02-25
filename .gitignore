@@ -1,7 +1,4 @@
 dist/
-!www/favicon.ico
-www/
-src/components.d.ts
 
 *~
 *.sw[mnpcod]
@@ -13,11 +10,8 @@ log.txt
 *.sublime-project
 *.sublime-workspace
 
-.stencil/
 .idea/
 .vscode/
-.sass-cache/
-.versions/
 node_modules/
 $RECYCLE.BIN/
 
@@ -25,3 +19,6 @@ $RECYCLE.BIN/
 Thumbs.db
 UserInterfaceState.xcuserstate
 .env
+coverage/
+playwright-report/
+test-results/
