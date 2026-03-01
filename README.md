@@ -9,6 +9,7 @@ This is the companion app to the boardgame Pocket Dragon.
 
 ## Shoulders we stand on
 
-- Built with [Stencil](https://stenciljs.com/)
-- Styles by [Material Design](https://material.io/)
+- Built with [React](https://react.dev/) and [Vite](https://vite.dev/)
+- PWA support by [vite-plugin-pwa](https://vite-pwa-org.netlify.app/)
+- Markdown rendering by [react-markdown](https://github.com/remarkjs/react-markdown)
 - Favicon and touch icons generated with [favicon-generator.org](https://www.favicon-generator.org/)
