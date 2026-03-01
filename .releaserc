@@ -1,7 +1,0 @@
-{
-  "branch": "release",
-  "noCi": true,
-  "verifyConditions": ["@semantic-release/github"],
-  "prepare": [],
-  "publish": ["@semantic-release/github"]
-}
