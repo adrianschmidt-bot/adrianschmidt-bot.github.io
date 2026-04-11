@@ -22,6 +22,7 @@ updates:
       vite:
         patterns:
           - "vite"
+          - "vite-plugin-pwa"
           - "@vitejs/*"
       vitest:
         patterns:
